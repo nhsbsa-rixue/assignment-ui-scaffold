@@ -2,7 +2,7 @@ import fs from "fs";
 import express from "express";
 import nunjucks from "nunjucks";
 import config from "../config";
-import { resolvePath, getContextPath } from "../utils";
+import { getContextPath } from "../utils";
 
 /**
  * Get all the subdirectories in the pages folder
@@ -25,11 +25,11 @@ const getSubDirectories = (source: string) => {
  */
 const getTemplatePaths = () => {
   const templatePaths = [
-    "../template",
-    "../../node_modules/nhsuk-frontend/packages",
-  ].map((templatePath) => resolvePath(templatePath));
+    "src/template",
+    "./node_modules/nhsuk-frontend/packages",
+  ];
 
-  const subDirs = getSubDirectories(resolvePath("../pages"));
+  const subDirs = getSubDirectories("src/pages");
 
   return [...templatePaths, ...subDirs];
 };
@@ -51,12 +51,12 @@ const setupTemplate = (app: App) => {
    * 2. nhsuk-frontend package
    */
   const publicPaths = [
-    "../../public",
-    "../../node_modules/nhsuk-frontend/dist",
+    "./public",
+    "./node_modules/nhsuk-frontend/dist",
   ];
 
   publicPaths.forEach((publicPath) => {
-    app.use(getContextPath(""), express.static(resolvePath(publicPath)));
+    app.use(getContextPath(""), express.static(publicPath));
   });
 
   // Set the path to the page template and macros

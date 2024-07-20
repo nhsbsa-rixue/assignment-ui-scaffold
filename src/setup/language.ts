@@ -2,7 +2,6 @@ import config from "../config";
 import i18next from "i18next";
 import middleware from "i18next-http-middleware";
 import Backend from "i18next-fs-backend";
-import { resolvePath } from "../utils";
 
 const saveUserPreference = (req:Req, res, next) => {
   if (req.query.lang) {
@@ -29,7 +28,7 @@ const setupLanguage = (app: App) => {
       ns: ["common", "error", "dob"],
       defaultNS: "",
       backend: {
-        loadPath: resolvePath("../locales/{{lng}}/{{ns}}.json"),
+        loadPath: "src/locales/{{lng}}/{{ns}}.json",
       },
       detection: {
         order: ["querystring", "cookie", "header"],

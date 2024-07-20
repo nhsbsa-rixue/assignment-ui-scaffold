@@ -7,7 +7,8 @@ WORKDIR /app
 COPY . /app
 
 
-RUN npm install
+RUN npm install -g rimraf
+RUN npm install --omit-dev
 RUN npm run build
 
 

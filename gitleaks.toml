@@ -1,0 +1,4 @@
+title = "UI Scaffold Gitleaks config"
+
+[extend]
+path = "gitleaks-nhsbsa.toml"

@@ -44,11 +44,19 @@ This project uses the following libraries:
 
 The `setup` folder contains configuration for various parts of the application:
 
-- `setupLanguage.js`: Configures i18next for internationalization.
-- `setupMiddleware.js`: Configures Express middleware.
-- `setupRoutes.js`: Configures Express routes.
-- `setupSession.js`: Configures Express session.
-- `setupTemplate.js`: Configures Nunjucks for templating.
+1. error-handler.ts: Define and use middlewares for handling errors within the application. 
+
+2. language: Sets up internationalization (i18n) for the application using i18next, i18next-http-middleware, and i18next-fs-backend.
+
+3. pages: Configures routes for the application's pages. It dynamically registers routes based on the exported properties from the pages module. 
+
+4. parser: Sets up body parsing middleware for the application to parse incoming request bodies and cookies.
+
+5. security: Enhances application security by using helmet for setting various HTTP headers and compression for response compression. 
+
+6. session: Configures session management for the application using express-session and optionally connect-redis. 
+
+7. template: Configures Nunjucks as the templating engine for the application.
 
 ## Contributions
 
